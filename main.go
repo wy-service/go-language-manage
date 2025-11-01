@@ -59,7 +59,8 @@ func excelToJson() {
 			// }
 			s2, err := strconv.Unquote(`"` + colCell + `"`) // 转义
 			if err != nil {
-				log("strconv.Unquote error:", err)
+				log("strconv.Unquote error:", err, key)
+				s2 = colCell // 如果有错误,说明有特殊字符，则直接使用
 			}
 			jsonMap[key] = s2
 			m[lang] = jsonMap
